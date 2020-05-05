@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'AkunController@dashboard');
 Route::get('/keluhan', 'KeluhanController@index');
+Route::get('/keluhan/export', 'KeluhanController@export');
 Route::delete('/keluhan/{id}', 'KeluhanController@hapus');
 
 Route::get('/laporan', 'LaporanController@index');
+Route::get('/laporan/export', 'LaporanController@export');
 Route::delete('/laporan/{id}', 'LaporanController@hapus');
 
 Route::get('/akun', 'AkunController@index');

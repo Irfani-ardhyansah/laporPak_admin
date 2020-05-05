@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Keluhan;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Exports\KeluhanExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 
 class KeluhanController extends Controller
 {
@@ -17,6 +20,11 @@ class KeluhanController extends Controller
     {
         $keluhan = Keluhan::get();
         return view('keluhan', compact('keluhan'));
+    }
+
+    public function export()
+    {
+        return Excel::download(new KeluhanExport, 'keluhan.xlsx');
     }
 
     public function hapus($id)

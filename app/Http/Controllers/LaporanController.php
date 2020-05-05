@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Lapra;
 use File;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Exports\LaporanExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 
 class LaporanController extends Controller
 {
@@ -19,6 +22,11 @@ class LaporanController extends Controller
     {
         $laporan = Lapra::all();
         return view('laporan', compact('laporan'));
+    }
+
+    public function export()
+    {
+        return Excel::download(new LaporanExport, 'laporan.xlsx');
     }
 
     public function hapus($id)
